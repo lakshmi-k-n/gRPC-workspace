@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package unary;
+
+service workspace{
+  // Workspace rpc declaration
+ rpc UserSignup(UserData) returns (UserDataResponse) {}
+
+}
+
+message UserData{
+ string name = 1;
+}
+
+message UserDataResponse{
+ string name = 1;
+ bool received = 2;
+}
