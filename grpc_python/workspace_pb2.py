@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fworkspace.proto\x12\x05unary\"\x18\n\x08UserData\x12\x0c\n\x04name\x18\x01 \x01(\t\"2\n\x10UserDataResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08received\x18\x02 \x01(\x08\x32\x45\n\tworkspace\x12\x38\n\nUserSignup\x12\x0f.unary.UserData\x1a\x17.unary.UserDataResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0fworkspace.proto\x12\x05unary\"K\n\x08UserData\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\"`\n\x10UserDataResponse\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08username\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\r\n\x05token\x18\x04 \x01(\t\x12\x0e\n\x06userId\x18\x05 \x01(\x05\" \n\rErrorResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"3\n\rUserLoginData\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"g\n\x11UserLoginResponse\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\x12\r\n\x05token\x18\x03 \x01(\t\x12\x0f\n\x07message\x18\x04 \x01(\t\x12\x0e\n\x06userId\x18\x05 \x01(\x05\"*\n\x0bProjectData\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\"A\n\x14ProjectMinimalDetail\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07ownerId\x18\x02 \x01(\x05\x12\n\n\x02id\x18\x03 \x01(\x05\"T\n\nFolderData\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x16\n\x0eparentFolderId\x18\x02 \x01(\x05\x12\x11\n\tprojectId\x18\x03 \x01(\x05\x12\r\n\x05token\x18\x04 \x01(\t\"k\n\x13\x46olderMinimalDetail\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x16\n\x0eparentFolderId\x18\x02 \x01(\x05\x12\x11\n\tprojectId\x18\x03 \x01(\x05\x12\x0f\n\x07ownerId\x18\x04 \x01(\x05\x12\n\n\x02id\x18\x05 \x01(\x05\"9\n\x08\x46ileData\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05token\x18\x02 \x01(\t\x12\x10\n\x08\x66olderId\x18\x03 \x01(\x05\"P\n\x11\x46ileMinimalDetail\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07ownerId\x18\x02 \x01(\x05\x12\x10\n\x08\x66olderId\x18\x03 \x01(\x05\x12\n\n\x02id\x18\x04 \x01(\x05\x32\xc4\x02\n\tworkspace\x12\x38\n\nUserSignup\x12\x0f.unary.UserData\x1a\x17.unary.UserDataResponse\"\x00\x12=\n\tUserLogin\x12\x14.unary.UserLoginData\x1a\x18.unary.UserLoginResponse\"\x00\x12\x42\n\rCreateProject\x12\x12.unary.ProjectData\x1a\x1b.unary.ProjectMinimalDetail\"\x00\x12?\n\x0c\x43reateFolder\x12\x11.unary.FolderData\x1a\x1a.unary.FolderMinimalDetail\"\x00\x12\x39\n\nCreateFile\x12\x0f.unary.FileData\x1a\x18.unary.FileMinimalDetail\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'workspace_pb2', globals())
@@ -21,9 +21,27 @@ if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _USERDATA._serialized_start=26
-  _USERDATA._serialized_end=50
-  _USERDATARESPONSE._serialized_start=52
-  _USERDATARESPONSE._serialized_end=102
-  _WORKSPACE._serialized_start=104
-  _WORKSPACE._serialized_end=173
+  _USERDATA._serialized_end=101
+  _USERDATARESPONSE._serialized_start=103
+  _USERDATARESPONSE._serialized_end=199
+  _ERRORRESPONSE._serialized_start=201
+  _ERRORRESPONSE._serialized_end=233
+  _USERLOGINDATA._serialized_start=235
+  _USERLOGINDATA._serialized_end=286
+  _USERLOGINRESPONSE._serialized_start=288
+  _USERLOGINRESPONSE._serialized_end=391
+  _PROJECTDATA._serialized_start=393
+  _PROJECTDATA._serialized_end=435
+  _PROJECTMINIMALDETAIL._serialized_start=437
+  _PROJECTMINIMALDETAIL._serialized_end=502
+  _FOLDERDATA._serialized_start=504
+  _FOLDERDATA._serialized_end=588
+  _FOLDERMINIMALDETAIL._serialized_start=590
+  _FOLDERMINIMALDETAIL._serialized_end=697
+  _FILEDATA._serialized_start=699
+  _FILEDATA._serialized_end=756
+  _FILEMINIMALDETAIL._serialized_start=758
+  _FILEMINIMALDETAIL._serialized_end=838
+  _WORKSPACE._serialized_start=841
+  _WORKSPACE._serialized_end=1165
 # @@protoc_insertion_point(module_scope)

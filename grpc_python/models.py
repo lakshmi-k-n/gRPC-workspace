@@ -62,7 +62,6 @@ class Folder(Base):
     project = relationship("Project", back_populates="folders")
     files = relationship("File", back_populates="folder")
     parent_folder_id = mapped_column(ForeignKey("folder.id"))
-    parent_folder = relationship('Folder, remote_side=[id]')
 
     def __repr__(self):
         return f"<Folder {self.name}>"

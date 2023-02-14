@@ -1,0 +1,93 @@
+syntax = "proto3";
+
+package unary;
+// import "google/protobuf/struct.proto";
+
+service workspace{
+  // Workspace rpc declaration
+ rpc UserSignup(UserData) returns (UserDataResponse) {};
+ rpc UserLogin(UserLoginData) returns (UserLoginResponse) {};
+ rpc CreateProject(ProjectData) returns (ProjectMinimalDetail) {};
+ rpc CreateFolder(FolderData) returns (FolderMinimalDetail) {};
+ rpc CreateFile(FileData) returns (FileMinimalDetail) {};
+
+}
+
+message UserData{
+ string name = 1;
+ string username = 2;
+ string password = 3;
+ string email = 4;
+
+}
+
+message UserDataResponse {
+ string name = 1;
+ string username = 2;
+ string email = 3;
+ string token = 4;
+//  bool received = 5;
+ int32 userId = 5;
+}
+
+message ErrorResponse {
+  string message = 1;
+}
+
+message UserLoginData {
+  string username = 1;
+  string password = 2;
+}
+
+message UserLoginResponse {
+  string username = 1;
+  string password = 2;
+  string token = 3;
+  string message = 4;
+  int32 userId = 5;
+}
+
+message ProjectData {
+  string name = 1;
+  string token = 2;
+}
+
+message ProjectMinimalDetail {
+  string name = 1;
+  int32 ownerId = 2;
+  int32 id = 3;
+}
+
+message FolderData {
+  string name = 1;
+  // Either folder id or
+  // project id
+  int32 parentFolderId = 2;
+  int32 projectId = 3;
+  string token = 4;
+}
+
+message FolderMinimalDetail {
+  string name = 1;
+  // Either folder id or
+  // project id
+  int32 parentFolderId = 2;
+  int32 projectId = 3;
+  int32 ownerId = 4;
+  int32 id = 5;
+
+}
+
+message FileData {
+  string name = 1;
+  string token = 2;
+  int32 folderId = 3;
+}
+
+message FileMinimalDetail {
+  string name = 1;
+  int32 ownerId = 2;
+  int32 folderId = 3;
+  int32 id = 4;
+
+}

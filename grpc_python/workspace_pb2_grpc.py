@@ -19,6 +19,26 @@ class workspaceStub(object):
                 request_serializer=workspace__pb2.UserData.SerializeToString,
                 response_deserializer=workspace__pb2.UserDataResponse.FromString,
                 )
+        self.UserLogin = channel.unary_unary(
+                '/unary.workspace/UserLogin',
+                request_serializer=workspace__pb2.UserLoginData.SerializeToString,
+                response_deserializer=workspace__pb2.UserLoginResponse.FromString,
+                )
+        self.CreateProject = channel.unary_unary(
+                '/unary.workspace/CreateProject',
+                request_serializer=workspace__pb2.ProjectData.SerializeToString,
+                response_deserializer=workspace__pb2.ProjectMinimalDetail.FromString,
+                )
+        self.CreateFolder = channel.unary_unary(
+                '/unary.workspace/CreateFolder',
+                request_serializer=workspace__pb2.FolderData.SerializeToString,
+                response_deserializer=workspace__pb2.FolderMinimalDetail.FromString,
+                )
+        self.CreateFile = channel.unary_unary(
+                '/unary.workspace/CreateFile',
+                request_serializer=workspace__pb2.FileData.SerializeToString,
+                response_deserializer=workspace__pb2.FileMinimalDetail.FromString,
+                )
 
 
 class workspaceServicer(object):
@@ -31,6 +51,30 @@ class workspaceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def UserLogin(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateProject(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateFolder(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateFile(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_workspaceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -38,6 +82,26 @@ def add_workspaceServicer_to_server(servicer, server):
                     servicer.UserSignup,
                     request_deserializer=workspace__pb2.UserData.FromString,
                     response_serializer=workspace__pb2.UserDataResponse.SerializeToString,
+            ),
+            'UserLogin': grpc.unary_unary_rpc_method_handler(
+                    servicer.UserLogin,
+                    request_deserializer=workspace__pb2.UserLoginData.FromString,
+                    response_serializer=workspace__pb2.UserLoginResponse.SerializeToString,
+            ),
+            'CreateProject': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateProject,
+                    request_deserializer=workspace__pb2.ProjectData.FromString,
+                    response_serializer=workspace__pb2.ProjectMinimalDetail.SerializeToString,
+            ),
+            'CreateFolder': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateFolder,
+                    request_deserializer=workspace__pb2.FolderData.FromString,
+                    response_serializer=workspace__pb2.FolderMinimalDetail.SerializeToString,
+            ),
+            'CreateFile': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateFile,
+                    request_deserializer=workspace__pb2.FileData.FromString,
+                    response_serializer=workspace__pb2.FileMinimalDetail.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -63,5 +127,73 @@ class workspace(object):
         return grpc.experimental.unary_unary(request, target, '/unary.workspace/UserSignup',
             workspace__pb2.UserData.SerializeToString,
             workspace__pb2.UserDataResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UserLogin(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/unary.workspace/UserLogin',
+            workspace__pb2.UserLoginData.SerializeToString,
+            workspace__pb2.UserLoginResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateProject(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/unary.workspace/CreateProject',
+            workspace__pb2.ProjectData.SerializeToString,
+            workspace__pb2.ProjectMinimalDetail.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateFolder(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/unary.workspace/CreateFolder',
+            workspace__pb2.FolderData.SerializeToString,
+            workspace__pb2.FolderMinimalDetail.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def CreateFile(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/unary.workspace/CreateFile',
+            workspace__pb2.FileData.SerializeToString,
+            workspace__pb2.FileMinimalDetail.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
