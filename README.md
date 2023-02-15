@@ -11,3 +11,8 @@ A Team workspace using gRPC as database server with methods. This project also h
 Install all the required dependencies
 
 `pip install -r requirements.txt`
+
+## Testing
+For testing, 
+- Run `workspace_server.py` to launch gRPC service.
+- Run python `.\manage.py runserver 0.0.0.0:8000` on `workstation` project folder
