@@ -6,7 +6,7 @@ from google.protobuf.json_format import MessageToDict
 # MAIN CLIENT FILE
 class WorkspaceClient(object):
     """
-    Client for gRPC functionality
+    gRPC client
     """
     def __init__(self):
         self.host = 'localhost'
@@ -19,37 +19,42 @@ class WorkspaceClient(object):
 
     def user_signup(self, data):
         """
-        Client function that calls method `UserSignup`
+        Client method that calls method `UserSignup`
         """
         data = pb2.UserData(**data)
         return self.stub.UserSignup(data)
 
     def user_login(self, data):
         """
+        Client method that calls method `UserLogin`
         """
         data = pb2.UserLoginData(**data)
         return self.stub.UserLogin(data)
 
     def create_project(self, data):
         """
+        Client method that calls method `CreateProject`
         """
         data = pb2.ProjectData(**data)
         return self.stub.CreateProject(data)
 
     def create_folder(self, data):
         """
+        Client method that calls method `CreateFolder`
         """
         data = pb2.FolderData(**data)
         return self.stub.CreateFolder(data)
 
     def create_file(self, data):
         """
+        Client method that calls method `CreateFile`
         """
         data = pb2.FileData(**data)
         return self.stub.CreateFile(data)
 
     def view_project(self, data):
         """
+        Client method that calls method `ViewProject`
         Lists folders inside a project
         """
         data = pb2.ProjectData(**data)
@@ -57,13 +62,14 @@ class WorkspaceClient(object):
 
     def view_file(self, data):
         """
-        view contents of a file
+        Client method that calls method `ViewFile`
         """
         data = pb2.FileData(**data)
         return self.stub.ViewFile(data)
 
     def update_file(self, data):
         """
+        Client method that calls method `UpdateFile`
         Update file properties
         Move file to folder
         """

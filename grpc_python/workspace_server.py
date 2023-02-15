@@ -1,6 +1,5 @@
 import grpc
 from concurrent import futures
-import time
 import workspace_pb2_grpc as pb2_grpc
 import workspace_pb2 as pb2
 from sqlalchemy.orm import sessionmaker
@@ -77,6 +76,8 @@ class workspaceService(pb2_grpc.workspaceServicer):
         name = request.name
         token = request.token
         data = verify_access_token(token)
+        import pdb
+        pdb.set_trace()
         result = {}
         owner_id = 0
         project_id = 0
@@ -197,6 +198,9 @@ class workspaceService(pb2_grpc.workspaceServicer):
         pass
 
     def UpdateFile(self, request, context):
+        '''
+        Update file properties
+        '''
         file_id = request.id
         folder_id = request.folderId
         name = request.name
@@ -245,8 +249,8 @@ class workspaceService(pb2_grpc.workspaceServicer):
             return pb2.ProjectContent(**result)
         folders =  self.session.query(Folder).filter_by(project_id=project_id)
         folders_list = []
-        item_dict = {}
         for folder in folders:
+            item_dict = {}
             item_dict.update({'id': folder.id,
                               'name': folder.name,
                               'owner':folder.user.username})
@@ -269,8 +273,6 @@ class workspaceService(pb2_grpc.workspaceServicer):
         '''
         file_id = request.id
         result = {}
-        # import pdb
-        # pdb.set_trace()
         if not self.session.get(File, file_id):
             result = {'message': 'File does not exist!'}
             return pb2.FileMinimalDetail(**result)
